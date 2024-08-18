@@ -10,3 +10,4 @@
 *.zip
 *.pdf
 
+/local/php_interface/vendor
