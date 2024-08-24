@@ -1,11 +1,9 @@
 <?php
 
 namespace Otus\Diagnostic;
-
 class Helper {
     public static function writeToLog($data, $title = ''): bool
     {
-        // Проверка определения константы
         if (!defined('DEBUG_FILE_NAME') || !DEBUG_FILE_NAME) {
             error_log("DEBUG_FILE_NAME не определено или пусто", 0);
             return false;
@@ -20,4 +18,4 @@ class Helper {
         file_put_contents(DEBUG_FILE_NAME, $log, FILE_APPEND);
         return true;
     }
-}
+};

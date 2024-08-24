@@ -5,4 +5,4 @@ if (file_exists(__DIR__ . '/classes/autoload.php')) {
     require_once __DIR__ . '/classes/autoload.php';
 }
 
-\Otus\Diagnostic\Helper::writeToLog('Hello World');
+\Otus\Diagnostic\myNewHelper::writeToLog('Тестовая запись в лог');
