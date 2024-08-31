@@ -386,10 +386,10 @@ $arUrlRewrite=array (
   ),
   120 => 
   array (
-    'CONDITION' => '#^/marketing/template/#',
+    'CONDITION' => '#^/marketing/templates/#',
     'RULE' => '',
     'ID' => '',
-    'PATH' => '/marketing/template.php',
+    'PATH' => '/marketing/templates.php',
     'SORT' => 100,
   ),
   12 => 
