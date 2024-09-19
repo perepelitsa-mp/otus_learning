@@ -14,7 +14,7 @@ IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/intranet/public
 
 global $APPLICATION;
 
-// You can change this url template
+// You can change this url templates
 $strGroupSubjectLinkTemplate = COption::GetOptionString("socialnetwork", "subject_path_template", SITE_DIR."workgroups/group/search/#subject_id#/", SITE_ID);
 $strGroupLinkTemplate = COption::GetOptionString("socialnetwork", "group_path_template", SITE_DIR."workgroups/group/#group_id#/", SITE_ID);
 

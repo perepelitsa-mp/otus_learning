@@ -6,7 +6,7 @@
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED!==true)die();
 IncludeModuleLangFile($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/intranet/public/workgroups/extranet/.left.menu_ext.php');
 
-// You can change this url template
+// You can change this url templates
 $strGroupSubjectLinkTemplate = COption::GetOptionString('socialnetwork', 'subject_path_template', SITE_DIR.'workgroups/group/search/#subject_id#/');
 $strGroupLinkTemplate = COption::GetOptionString('socialnetwork', 'group_path_template', SITE_DIR.'workgroups/group/#group_id#/');
 
