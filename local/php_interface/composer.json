@@ -1,0 +1,9 @@
+{
+  "require": {
+    "guzzlehttp/guzzle": "^7.9",
+    "symfony/console": "@stable",
+    "phpoffice/phpspreadsheet": "@stable",
+    "bitrix-expert/monolog-adapter": "^1.0",
+    "monolog/monolog": "^1.27"
+  }
+}

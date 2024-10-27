@@ -23,8 +23,6 @@ $APPLICATION->SetAdditionalCSS($templateFolder . "/styles.css");
             <?php endforeach; ?>
         </select>
     </form>
-
-
 </div>
 
 <script>

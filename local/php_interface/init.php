@@ -29,7 +29,12 @@ function pr($var, $type = false) {
 use Bitrix\Main\Loader;
 use Bitrix\Main\EventManager;
 
+
+Bitrix\Main\UI\Extension::load(['workTime.homeWork']);
+
 $eventManager = EventManager::getInstance();
+
+
 
 // пользовательский тип для свойства инфоблока
 $eventManager->AddEventHandler(

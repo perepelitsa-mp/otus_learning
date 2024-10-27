@@ -63,16 +63,21 @@ if (!document.getElementById('bookingScript')) {
         bookButtons.forEach(function(bookButton) {
             bookButton.addEventListener("click", function(e) {
                 e.preventDefault();
-                e.stopPropagation();  
+                e.stopPropagation();  // Останавливаем распространение события
 
+                // Получаем doctorId из атрибута id у текущей кнопки
                 var doctorId = this.id.split('_').pop();
 
+                // Получаем процедуры из data-атрибута текущей кнопки
                 var procedures = JSON.parse(this.getAttribute('data-procedures'));
 
+                // Формируем опции для выпадающего списка с процедурами
                 var optionsHtml = '';
                 procedures.forEach(function(procedure) {
                     optionsHtml += '<option value="' + procedure.ID + '">' + BX.util.htmlspecialchars(procedure.NAME) + '</option>';
                 });
+
+                // Формируем содержимое формы и добавляем скрытое поле doctor_id
                 var formContent = '<form id="bookingForm_' + doctorId + '">' +
                     '<label>ФИО пациента: <input type="text" name="patient_name"></label><br>' +
                     '<label>Время записи: <input type="datetime-local" name="appointment_time"></label><br>' +
@@ -82,6 +87,8 @@ if (!document.getElementById('bookingScript')) {
                     '<input type="hidden" name="doctor_id" value="' + doctorId + '">' +
                     '<button type="submit">Записаться</button>' +
                     '</form>';
+
+                // Создаем и показываем всплывающее окно с формой
                 BX.PopupWindowManager.create("bookingPopup_" + doctorId, null, {
                     content: formContent,
                     titleBar: {content: BX.create("span", {html: "Запись на процедуру"})},
@@ -93,10 +100,11 @@ if (!document.getElementById('bookingScript')) {
                     buttons: []
                 }).show();
 
+                // Обработка отправки формы
                 var form = document.getElementById("bookingForm_" + doctorId);
                 form.addEventListener('submit', function(event) {
-                    event.preventDefault(); 
-                    event.stopPropagation(); 
+                    event.preventDefault();  // Останавливаем стандартное поведение формы
+                    event.stopPropagation();  // Останавливаем дальнейшую обработку событий
 
                     var formData = {
                         patient_name: form.patient_name.value,
@@ -105,6 +113,7 @@ if (!document.getElementById('bookingScript')) {
                         doctor_id: form.doctor_id.value
                     };
 
+                    // Отправляем данные через AJAX
                     BX.ajax({
                         url: "/local/ajax/booking.php",
                         data: formData,  // Передаем объект данных напрямую
@@ -116,6 +125,8 @@ if (!document.getElementById('bookingScript')) {
                                 if(response.status == "success") {
                                     alert("Запись успешно создана");
                                     BX.PopupWindowManager.getCurrentPopup().close();
+                                    
+                                    // После успешной записи делаем редирект на нужную страницу
                                     window.location.href = 'http://127.0.0.1/services/lists/28/view/0/?list_section_id=';
                                 } else {
                                     alert(response.message);
@@ -131,6 +142,7 @@ if (!document.getElementById('bookingScript')) {
                         }
                     });
 
+                    // Удаляем обработчик формы, чтобы не допустить повторной отправки
                     form.removeEventListener('submit', arguments.callee);
                 });
             });
